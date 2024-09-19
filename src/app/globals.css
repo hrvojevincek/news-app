@@ -3,25 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f5f8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  .container {
+    @apply mx-auto;
+    max-width: 76%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.filter-redprimary {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(2913%)
+    hue-rotate(346deg) brightness(65%) contrast(92%);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.filter-grayish {
+  filter: brightness(0) saturate(100%) invert(10%) sepia(100%) saturate(0%)
+    hue-rotate(346deg) brightness(60%) contrast(42%);
 }
