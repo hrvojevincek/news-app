@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} font-sans antialiased smooth scroll-smooth bg-background`}
       >
-        <main className="h-screen px-4 sm:px-0 border-4 border-red-500">
+        <main className="h-screen px-4 sm:px-0 border-4">
           <Header />
           {children}
         </main>

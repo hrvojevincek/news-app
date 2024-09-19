@@ -40,6 +40,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ setIsOpen }) => {
             <Link
               key={index}
               href="#"
+              onClick={() => setIsOpen(false)}
               className={
                 isActive
                   ? "flex flex-col justify-center items-center text-sm font-bold h-20 border border-gray-200 rounded-lg text-redprimary bg-white shadow-lg hover:bg-gray-50 transition-colors"

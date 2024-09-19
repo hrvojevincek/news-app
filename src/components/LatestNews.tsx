@@ -4,12 +4,12 @@ import NewsBit from "./NewsBit";
 
 const LatestNews = () => {
   return (
-    <div className="bg-white rounded-md p-4 border-4 border-green-500">
+    <div className="bg-white rounded-md p-4 h-[529px] flex flex-col justify-around">
       <div className="flex items-center gap-2">
         <Image src="/icons/alert.svg" alt="alert" width={20} height={20} />
         <p className="text-lg font-bold ">Latest news</p>
       </div>
-      <div className="flex-1 flex-col overflow-y-scroll max-h-[calc(65vh-6rem)]">
+      <div className="grid overflow-scroll max-h-[calc(68vh-6rem)]">
         <NewsBit />
         <NewsBit />
         <NewsBit />

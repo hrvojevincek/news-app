@@ -1,22 +1,24 @@
 import React from "react";
 import Input from "./ui/Input";
 import Hamburger from "./ui/Hamburger";
-import MobileButton from "./MobileButton";
+import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="md:container mx-auto grid grid-cols-2 gap-5 sm:grid-cols-3 mt-5 items-center">
-      <h1 className="text-4xl text-black font-black">
-        <span className="text-redprimary">My</span>News
-      </h1>
+    <header className="sm:container mx-auto grid sm:grid-cols-3 gap-5 sm:gap-6 md:grid-cols-12 mt-5 items-center">
+      <Link
+        href="/"
+        className="col-span-1 sm:col-span-1 md:col-span-4 lg:col-span-2"
+      >
+        <h1 className="text-4xl text-black font-black">
+          <span className="text-redprimary">My</span>News
+        </h1>
+      </Link>
       <div className="sm:hidden block justify-self-end">
         <Hamburger />
       </div>
-      <div className="col-span-2">
+      <div className="col-span-2 sm:col-span-2 md:col-span-8">
         <Input />
-      </div>
-      <div className="align-center sm:hidden block col-span-2">
-        <MobileButton />
       </div>
     </header>
   );
