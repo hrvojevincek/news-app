@@ -13,10 +13,11 @@ const config: Config = {
         foreground: "var(--foreground)",
         redprimary: "#BB1E1E",
         grayish: "#8D8D8C",
-        blackbox: "#1D1D1B",
+        cardauthor: "#1D1D1B",
         bluetitle: "#1E71BB",
         grayicon: "#979797",
         borderbottom: "#F4F5F8",
+        authorgray: "#F8F5F2",
       },
     },
     screens: {

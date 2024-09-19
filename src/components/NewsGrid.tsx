@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Card from "./Card";
 import LatestNews from "./LatestNews";
+import CardBreaking from "./CardBreaking";
 
 const isActive = false;
 
@@ -57,7 +58,7 @@ const NewsGrid = () => {
             <Card />
           </div>
           <div className="col-span-3 w-[322px] h-[250px]">
-            <Card />
+            <CardBreaking />
           </div>
         </div>
         <div className="flex-1">
