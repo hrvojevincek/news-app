@@ -4,7 +4,7 @@ import NewsBit from "./NewsBit";
 
 const LatestNews = () => {
   return (
-    <div className="bg-white rounded-md p-4 h-[529px] flex flex-col justify-around">
+    <div className="bg-white rounded-md p-4 h-[529px] flex flex-col justify-around w-[321px]">
       <div className="flex items-center gap-2">
         <Image src="/icons/alert.svg" alt="alert" width={20} height={20} />
         <p className="text-lg font-bold ">Latest news</p>
