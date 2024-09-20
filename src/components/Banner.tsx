@@ -5,8 +5,10 @@ const Banner = () => {
     <div className="bg-redprimary h-[60px] relative">
       <div className="container absolute inset-0 flex items-center">
         <div className="flex flex-wrap mr-auto items-center gap-4 text-white">
-          <p className="text-md font-bold">Make MyNews your homepage</p>
-          <p className="font-light">
+          <p className="md:text-md md:font-bold text-sm">
+            Make MyNews your homepage
+          </p>
+          <p className="font-light md:block hidden">
             Every day discover what is trending on internet
           </p>
         </div>

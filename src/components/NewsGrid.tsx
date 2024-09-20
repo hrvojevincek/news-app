@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Card from "./Card";
 import CardBreaking from "./CardBreaking";
 import LatestNews from "./LatestNews";
+import MobileButton from "./MobileButton";
 
 const cards = [
   { id: 1, type: "normal" },
@@ -24,23 +27,38 @@ const cards = [
 ];
 
 const NewsGrid = () => {
+  const [currentView, setCurrentView] = useState<"featured" | "latest">(
+    "featured"
+  );
+
+  const handleViewChange = (view: "featured" | "latest") => {
+    setCurrentView(view);
+  };
+
   return (
     <>
-      <h1 className="text-xl font-bold mb-4 leading-6">News</h1>
-      <div className="grid grid-cols-3 grid-rows-3 gap-[22px]">
-        {cards.slice(0).map((card, index) => (
-          <React.Fragment key={card.id}>
-            {index === 2 ? (
-              <div className="row-span-2">
-                <LatestNews />
-              </div>
-            ) : (
-              <div>
-                {card.type === "breaking" ? <CardBreaking /> : <Card />}
-              </div>
-            )}
-          </React.Fragment>
-        ))}
+      <MobileButton onSelectView={handleViewChange} />
+
+      <div className="mt-5 sm:hidden">
+        {currentView === "featured" ? <Card /> : <LatestNews />}
+      </div>
+      <div className="hidden md:block">
+        <h1 className="text-xl font-bold mb-4  leading-6">News</h1>
+        <div className="grid grid-cols-3 grid-rows-3 gap-[22px]">
+          {cards.map((card, index) => (
+            <React.Fragment key={card.id}>
+              {index === 2 ? (
+                <div className="row-span-2">
+                  <LatestNews />
+                </div>
+              ) : (
+                <div>
+                  {card.type === "breaking" ? <CardBreaking /> : <Card />}
+                </div>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
       </div>
     </>
   );

@@ -1,14 +1,14 @@
-import React from "react";
-import Input from "./ui/Input";
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
+import React from "react";
+import SidebarItems from "./SidebarItems";
+import Input from "./ui/Input";
 
 interface MobileMenuProps {
   isOpen?: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }
-
-const isActive = false;
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ setIsOpen }) => {
   return (
@@ -28,39 +28,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ setIsOpen }) => {
           <Input />
         </div>
         <div className="grid grid-cols-3 gap-4 w-full max-w-sm">
-          {[
-            "Home",
-            "General",
-            "Business",
-            "Health",
-            "Science",
-            "Sports",
-            "Technology",
-          ].map((link, index) => (
-            <Link
-              key={index}
-              href="#"
-              onClick={() => setIsOpen(false)}
-              className={
-                isActive
-                  ? "flex flex-col justify-center items-center text-sm font-bold h-20 border border-gray-200 rounded-lg text-redprimary bg-white shadow-lg hover:bg-gray-50 transition-colors"
-                  : "flex flex-col justify-center items-center text-sm font-bold h-20 border border-gray-200 rounded-lg text-grayish bg-white shadow-lg hover:bg-gray-50 transition-colors"
-              }
-            >
-              <Image
-                src={`/icons/${link.toLowerCase()}.svg`}
-                alt={link}
-                width={24}
-                height={24}
-                className={
-                  isActive
-                    ? "text-redprimary filter-redprimary m-1"
-                    : "text-grayish filter-grayish m-1"
-                }
-              />
-              {link}
-            </Link>
-          ))}
+          <SidebarItems setIsOpen={setIsOpen} />
         </div>
       </div>
     </div>
