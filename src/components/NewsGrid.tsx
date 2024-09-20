@@ -26,6 +26,16 @@ const cards = [
   { id: 17, type: "normal" },
 ];
 
+export type Headlines = {
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+  category: string;
+  language: string;
+  country: string;
+};
+
 const NewsGrid = () => {
   const [currentView, setCurrentView] = useState<"featured" | "latest">(
     "featured"

@@ -1,18 +1,12 @@
+import { useTopHeadlines } from "@/hooks/useTopHeadlines";
 import Image from "next/image";
 import NewsBit from "./NewsBit";
 
-interface Headlines {
-  id: string;
-  name: string;
-  description: string;
-  url: string;
-  category: string;
-  language: string;
-  country: string;
-}
+const LatestNews = () => {
+  const { headlines, loading, error } = useTopHeadlines();
 
-const LatestNews = ({ headlines }: { headlines?: Headlines[] }) => {
-  console.log(headlines);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div className="bg-white rounded-md p-4 flex h-[536px] flex-col justify-around row-span-2 col-start-3">
@@ -26,8 +20,10 @@ const LatestNews = ({ headlines }: { headlines?: Headlines[] }) => {
         />
         <p className="text-lg font-bold ">Latest news</p>
       </div>
-      <div className="flex flex-col overflow-scroll">
-        <NewsBit time="10 min ago" description="Lorem ipsum dolor sit amet" />
+      <div className="flex flex-col gap-2 overflow-scroll">
+        {headlines?.articles?.map(({ title, publishedAt }, index) => (
+          <NewsBit key={index} time={publishedAt} description={title} />
+        ))}
       </div>
       <div className="flex flex-col">
         <button className="flex items-center font-medium gap-2 text-bluetitle pt-4">
