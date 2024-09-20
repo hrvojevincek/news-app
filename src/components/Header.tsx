@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="sm:container mx-auto grid sm:grid-cols-3 gap-5 sm:gap-6 md:grid-cols-12 mt-5 items-center">
+    <header className="mx-auto grid sm:grid-cols-3 gap-5 sm:gap-6 md:grid-cols-12 mt-5 items-center">
       <Link
         href="/"
         className="col-span-1 sm:col-span-1 md:col-span-4 lg:col-span-2"
@@ -20,6 +20,7 @@ const Header = () => {
       <div className="col-span-2 sm:col-span-2 md:col-span-8">
         <Input />
       </div>
+      <hr className="bg-grayish col-span-12 sm:block hidden" />
     </header>
   );
 };

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import Latest from "@/components/LatestNews";
 import Card from "@/components/Card";
+import Latest from "@/components/LatestNews";
 import MobileButton from "@/components/MobileButton";
-import NewsGrid from "@/components/NewsGrid";
+import NewsGrid2 from "@/components/NewsGrid";
+import { useState } from "react";
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<"featured" | "latest">(
@@ -16,12 +16,12 @@ export default function Home() {
   };
 
   return (
-    <div className="sm:container mt-10 sm:mt-6">
+    <div className="mt-10 sm:mt-6">
       <MobileButton onSelectView={handleViewChange} />
       <div className="mt-5 sm:hidden">
         {currentView === "featured" ? <Card /> : <Latest />}
       </div>
-      <NewsGrid />
+      <NewsGrid2 />
     </div>
   );
 }

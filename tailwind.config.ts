@@ -10,7 +10,6 @@ const config: Config = {
     extend: {
       colors: {
         background: "var(--background)",
-        foreground: "var(--foreground)",
         redprimary: "#BB1E1E",
         grayish: "#8D8D8C",
         cardauthor: "#1D1D1B",

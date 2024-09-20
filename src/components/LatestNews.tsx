@@ -2,15 +2,16 @@ import Image from "next/image";
 import React from "react";
 import NewsBit from "./NewsBit";
 
+// h-[529px] w-[321px]
+
 const LatestNews = () => {
   return (
-    <div className="bg-white rounded-md p-4 h-[529px] flex flex-col justify-around w-[321px]">
+    <div className="bg-white rounded-md p-4 flex h-[536px] flex-col justify-around row-span-2 col-start-3">
       <div className="flex items-center gap-2">
         <Image src="/icons/alert.svg" alt="alert" width={20} height={20} />
         <p className="text-lg font-bold ">Latest news</p>
       </div>
-      <div className="grid overflow-scroll max-h-[calc(68vh-6rem)]">
-        <NewsBit />
+      <div className="flex flex-col overflow-scroll">
         <NewsBit />
         <NewsBit />
         <NewsBit />
