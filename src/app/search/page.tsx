@@ -1,10 +1,12 @@
 "use client";
 
+import React from "react";
+
+import { useSearchParams } from "next/navigation";
+
 import NewsGrid from "@/components/NewsGrid";
 import { useGetSearchArticles } from "@/hooks/useGetSearchArticles";
 import { NYTArticle } from "@/hooks/useGetTopStories";
-import { useSearchParams } from "next/navigation";
-import React from "react";
 
 const Page = () => {
   const searchParams = useSearchParams();

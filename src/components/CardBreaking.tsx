@@ -1,10 +1,12 @@
-import { useGetBreakingStories } from "@/hooks/useGetBreakingStories";
-import Link from "next/link";
 import React from "react";
+
+import Link from "next/link";
+
+import { useGetBreakingStories } from "@/hooks/useGetBreakingStories";
 
 const CardBreaking = (category: { category: string }) => {
   const { headlines, loading, error } = useGetBreakingStories(
-    category.category
+    category.category,
   );
 
   if (loading) return <div className="bg-cardauthor h-full rounded-lg"></div>;

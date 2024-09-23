@@ -1,7 +1,8 @@
 "use client";
 
-import { getBreakingStoriesNYT } from "@/utils/actions/getBreakingStories";
 import { useEffect, useState } from "react";
+
+import { getBreakingStoriesNYT } from "@/utils/actions/getBreakingStories";
 
 interface NYTArticle {
   abstract: string;
@@ -42,7 +43,7 @@ export const useGetBreakingStories = (category: string) => {
         setLoading(true);
         const data = await getBreakingStoriesNYT(category);
         const filteredData = data.filter(
-          (article: NYTArticle) => article.title
+          (article: NYTArticle) => article.title,
         );
         setHeadlines(filteredData);
       } catch (err) {

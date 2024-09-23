@@ -1,9 +1,10 @@
 "use client";
 
+import { useCallback, useEffect, useState } from "react";
+
 import { Bookmark, BookmarkXIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
 
 type Multimedia = {
   [key: string]: string;
@@ -24,7 +25,7 @@ const Card = ({ uri, title, multimedia, section, byline, url }: CardProps) => {
   useEffect(() => {
     const bookmarks = JSON.parse(localStorage.getItem("bookmarks") || "[]");
     setIsBookmarked(
-      bookmarks.some((bookmark: CardProps) => bookmark.uri === uri)
+      bookmarks.some((bookmark: CardProps) => bookmark.uri === uri),
     );
   }, [uri]);
 
@@ -34,13 +35,13 @@ const Card = ({ uri, title, multimedia, section, byline, url }: CardProps) => {
 
     if (isBookmarked) {
       const updatedBookmarks = bookmarks.filter(
-        (bookmark: CardProps) => bookmark.uri !== uri
+        (bookmark: CardProps) => bookmark.uri !== uri,
       );
       localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks));
     } else {
       localStorage.setItem(
         "bookmarks",
-        JSON.stringify([...bookmarks, newBookmark])
+        JSON.stringify([...bookmarks, newBookmark]),
       );
     }
 
@@ -82,7 +83,10 @@ const Card = ({ uri, title, multimedia, section, byline, url }: CardProps) => {
         </p>
       </div>
       <div className="absolute bottom-2 right-2 cursor-pointer">
-        <button onClick={handleBookmark} aria-label={isBookmarked ? "Remove bookmark" : "Add bookmark"}>
+        <button
+          onClick={handleBookmark}
+          aria-label={isBookmarked ? "Remove bookmark" : "Add bookmark"}
+        >
           {isBookmarked ? (
             <BookmarkXIcon className="w-5 h-5 text-grayish/70" />
           ) : (

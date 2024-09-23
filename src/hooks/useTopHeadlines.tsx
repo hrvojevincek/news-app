@@ -1,5 +1,6 @@
-import { getTopHeadlines } from "@/utils/actions/getTopHeadlines";
 import { useEffect, useState, useCallback } from "react";
+
+import { getTopHeadlines } from "@/utils/actions/getTopHeadlines";
 
 export type Headlines = {
   status: string;

@@ -8,7 +8,7 @@ interface MobileButtonProps {
 
 const MobileButton: React.FC<MobileButtonProps> = ({ onSelectView }) => {
   const [activeView, setActiveView] = useState<"featured" | "latest">(
-    "featured"
+    "featured",
   );
 
   const handleClick = (view: "featured" | "latest") => {

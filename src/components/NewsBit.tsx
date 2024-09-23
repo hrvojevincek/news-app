@@ -1,6 +1,7 @@
-import Link from "next/link";
 import React from "react";
+
 import { formatDistanceToNow, parseISO } from "date-fns";
+import Link from "next/link";
 
 const NewsBit = ({
   url,

@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import MobileMenu from "../MobileMenu";
+
 import Image from "next/image";
+
+import MobileMenu from "../MobileMenu";
 
 const Hamburger = () => {
   const [isOpen, setIsOpen] = useState(false);

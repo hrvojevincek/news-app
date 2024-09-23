@@ -1,7 +1,8 @@
 "use client";
 
-import { getSearchArticles } from "@/utils/actions/getSearchArticles";
 import { useEffect, useState } from "react";
+
+import { getSearchArticles } from "@/utils/actions/getSearchArticles";
 
 interface Multimedia {
   url: string;

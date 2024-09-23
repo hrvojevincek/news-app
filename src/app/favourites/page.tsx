@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+
 import Card from "@/components/Card";
 import { CardProps } from "@/components/Card";
 
@@ -9,7 +10,7 @@ const FavouritesPage = () => {
 
   useEffect(() => {
     const savedBookmarks = JSON.parse(
-      localStorage.getItem("bookmarks") || "[]"
+      localStorage.getItem("bookmarks") || "[]",
     );
     setBookmarks(savedBookmarks);
   }, []);

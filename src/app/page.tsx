@@ -1,9 +1,11 @@
 "use client";
 
 import React from "react";
-import { useGetTopStories } from "@/hooks/useGetTopStories";
-import NewsGrid from "@/components/NewsGrid";
+
 import { Loader } from "lucide-react";
+
+import NewsGrid from "@/components/NewsGrid";
+import { useGetTopStories } from "@/hooks/useGetTopStories";
 
 const Page = () => {
   const { headlines, loading, error } = useGetTopStories("home");

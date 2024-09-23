@@ -1,3 +1,5 @@
+"use server";
+
 export async function getSearchArticles(search: string) {
   // remove spaces and replace with -
   const formattedSearch = search.replace(/\s+/g, "+");

@@ -1,7 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
+
+import Image from "next/image";
+
 import SidebarItems from "./SidebarItems";
 import Input from "./ui/Input";
 

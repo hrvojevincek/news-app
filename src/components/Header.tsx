@@ -1,7 +1,9 @@
 import React from "react";
-import Input from "./ui/Input";
-import Hamburger from "./ui/Hamburger";
+
 import Link from "next/link";
+
+import Hamburger from "./ui/Hamburger";
+import Input from "./ui/Input";
 
 const Header = () => {
   return (

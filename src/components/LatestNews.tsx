@@ -1,6 +1,9 @@
-import { useTopHeadlines } from "@/hooks/useTopHeadlines";
-import Image from "next/image";
 import { useCallback, useRef } from "react";
+
+import Image from "next/image";
+
+import { useTopHeadlines } from "@/hooks/useTopHeadlines";
+
 import NewsBit from "./NewsBit";
 
 const LatestNews = () => {
@@ -17,7 +20,7 @@ const LatestNews = () => {
       });
       if (node) observer.current.observe(node);
     },
-    [loading, headlines, fetchMore]
+    [loading, headlines, fetchMore],
   );
 
   return (
