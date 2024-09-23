@@ -27,11 +27,14 @@ export const useGetSearchArticles = (search: string | null) => {
         byline: article.byline.original,
         url: article.web_url,
         section: article.section_name,
-        multimedia: [
-          {
-            url: `https://www.nytimes.com/${article.multimedia[0].url}`,
-          },
-        ],
+        multimedia:
+          article.multimedia.length > 0 && article.multimedia[0].url
+            ? [
+                {
+                  url: `https://www.nytimes.com/${article.multimedia[0].url}`,
+                },
+              ]
+            : [],
       };
     });
   };
@@ -41,10 +44,8 @@ export const useGetSearchArticles = (search: string | null) => {
       try {
         if (search) {
           setLoading(true);
-
-          console.log("search in hook effect", search);
           const data = await getSearchArticles(search);
-          console.log("Fetched data:", data);
+          console.log("data", parsedData(data));
           setHeadlines(parsedData(data));
         }
       } catch (err) {

@@ -3,7 +3,7 @@ export async function getBreakingStoriesNYT(category: string) {
 
   if (category === "Home") category = "all";
 
-  const url = `https://api.nytimes.com/svc/news/v3/content/all/${category}.json?api-key=kTGAK2VAXabhavIe9ckSk07vO6ktosgv`;
+  const url = `https://api.nytimes.com/svc/news/v3/content/all/${category}.json?api-key=${process.env.NEXT_PUBLIC_NYTIMES_API_KEY}`;
 
   const res = await fetch(url);
   const data = await res.json();

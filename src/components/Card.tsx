@@ -42,7 +42,7 @@ const Card = ({
         </p>
 
         <p className="text-xs text-cardauthor hidden md:block">
-          {byline.slice(3, -1)}
+          {byline ? byline.slice(3, -1) : "No author"}
         </p>
       </div>
     </div>

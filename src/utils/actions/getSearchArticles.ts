@@ -1,5 +1,9 @@
 export async function getSearchArticles(search: string) {
-  const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${search}&api-key=${process.env.NEXT_PUBLIC_NYTIMES_API_KEY}`;
+  // remove spaces and replace with -
+  const formattedSearch = search.replace(/\s+/g, "+");
+  console.log("formattedSearch", formattedSearch);
+
+  const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${formattedSearch}&api-key=${process.env.NEXT_PUBLIC_NYTIMES_API_KEY}`;
 
   const res = await fetch(url);
   const data = await res.json();
