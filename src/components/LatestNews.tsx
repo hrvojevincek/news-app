@@ -10,7 +10,7 @@ const LatestNews = () => {
 
   return (
     <div className="bg-white rounded-md p-4 flex h-[536px] flex-col justify-around row-span-2 col-start-3">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 mb-2">
         <Image
           src="/icons/alert.svg"
           alt="alert"
@@ -18,11 +18,13 @@ const LatestNews = () => {
           height={20}
           className="animate-pulse"
         />
-        <p className="text-lg font-bold ">Latest news</p>
+        <p className="text-lg font-bold">Latest news</p>
       </div>
-      <div className="flex flex-col gap-2 overflow-scroll">
+      <div className="flex flex-col space-y-2 overflow-scroll">
         {headlines?.articles?.map(({ title, publishedAt }, index) => (
-          <NewsBit key={index} time={publishedAt} description={title} />
+          <div key={index} className=" h-24 border-b border-[#F4F5F8] pb-2">
+            <NewsBit key={index} time={publishedAt} description={title} />
+          </div>
         ))}
       </div>
       <div className="flex flex-col">

@@ -17,8 +17,8 @@ const SidebarItems = ({
           key={id}
           onClick={() => setIsOpen?.(false)}
           href={route}
-          className={`flex flex-col justify-center items-center text-xs h-14 shadow-sm hover:bg-white transition-colors ${
-            pathname === route ? "text-redprimary shadow-md" : "text-grayish/70"
+          className={`flex flex-col justify-center items-center text-xs h-14 hover:bg-white transition-colors ${
+            pathname === route ? "text-redprimary bg-white" : "text-grayish/70"
           }`}
         >
           <Image
