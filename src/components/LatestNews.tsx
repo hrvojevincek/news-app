@@ -32,7 +32,7 @@ const LatestNews = () => {
         />
         <p className="text-lg font-bold">Latest news</p>
       </div>
-      <div className="flex flex-col h-[calc(100vh-380px)] space-y-2 overflow-y-scroll">
+      <div className="flex flex-col h-[calc(100vh-386px)] space-y-2 overflow-y-scroll">
         {headlines?.articles.map(({ title, publishedAt, url }, index) => (
           <div
             key={index}

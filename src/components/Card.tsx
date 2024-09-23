@@ -82,7 +82,7 @@ const Card = ({ uri, title, multimedia, section, byline, url }: CardProps) => {
         </p>
       </div>
       <div className="absolute bottom-2 right-2 cursor-pointer">
-        <button onClick={handleBookmark}>
+        <button onClick={handleBookmark} aria-label={isBookmarked ? "Remove bookmark" : "Add bookmark"}>
           {isBookmarked ? (
             <BookmarkXIcon className="w-5 h-5 text-grayish/70" />
           ) : (

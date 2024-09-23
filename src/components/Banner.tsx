@@ -37,10 +37,14 @@ const Banner = () => {
           <button
             className="px-2 py-1 text-sm font-bold text-white rounded"
             onClick={handleNoThanks}
+            aria-label="Decline making MyNews your homepage"
           >
             No, Thanks
           </button>
-          <button className="px-3 py-1 bg-white text-black font-bold rounded-md">
+          <button
+            className="px-3 py-1 bg-white text-black font-bold rounded-md"
+            aria-label="Make MyNews your homepage"
+          >
             GET
           </button>
         </div>

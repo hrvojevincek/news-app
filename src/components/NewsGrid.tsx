@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Card from "./Card";
 import CardBreaking from "./CardBreaking";
 import LatestNews from "./LatestNews";
@@ -20,6 +20,11 @@ export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
     setCurrentView(view);
   };
 
+  const filteredArticles = useMemo(
+    () => articles?.filter((article) => article.title),
+    [articles]
+  );
+
   return (
     <>
       <MobileButton onSelectView={handleViewChange} />
@@ -31,7 +36,7 @@ export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 gap-[22px]">
-              {articles?.map(
+              {filteredArticles?.map(
                 ({ uri, byline, title, url, multimedia, section }, index) => (
                   <React.Fragment key={index}>
                     {index === 2 ? (

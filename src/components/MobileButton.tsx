@@ -26,6 +26,8 @@ const MobileButton: React.FC<MobileButtonProps> = ({ onSelectView }) => {
               : "bg-background text-black"
           }`}
           onClick={() => handleClick("featured")}
+          aria-label="Show featured news"
+          aria-pressed={activeView === "featured"}
         >
           Featured
         </button>
@@ -36,6 +38,8 @@ const MobileButton: React.FC<MobileButtonProps> = ({ onSelectView }) => {
               : "bg-background text-black"
           }`}
           onClick={() => handleClick("latest")}
+          aria-label="Show latest news"
+          aria-pressed={activeView === "latest"}
         >
           Latest
         </button>

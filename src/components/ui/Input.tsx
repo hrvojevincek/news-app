@@ -31,11 +31,13 @@ const Input = () => {
         className="h-10 pl-10 sm:h-[50px] text-black rounded-xl focus:outline-none w-full"
         value={searchTerm}
         onChange={handleSearch}
+        aria-label="Search news"
       />
       <button
         type="submit"
         className="absolute hidden sm:block right-2 bg-redprimary h-9 font-bold text-white uppercase top-1/2 -translate-y-1/2 px-4 py-1 rounded-md hover:bg-redPrimary/90 transition-colors"
         disabled={isSubmitting}
+        aria-label="Submit search"
       >
         Search
       </button>

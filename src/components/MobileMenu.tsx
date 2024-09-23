@@ -16,6 +16,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ setIsOpen }) => {
       <button
         onClick={() => setIsOpen(false)}
         className="absolute top-8 right-5 justify-end"
+        aria-label="Close mobile menu"
       >
         <Image src="/icons/x.svg" alt="Close" width={24} height={24} />
       </button>
