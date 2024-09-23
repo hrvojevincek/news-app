@@ -1,20 +1,24 @@
 import { useTopHeadlines } from "@/hooks/useTopHeadlines";
-import { Loader } from "lucide-react";
 import Image from "next/image";
+import { useCallback, useRef } from "react";
 import NewsBit from "./NewsBit";
-import { useEffect, useRef } from "react";
 
 const LatestNews = () => {
-  const { headlines, loading, error, fetchMore } = useTopHeadlines(1);
-  const containerRef = useRef(null);
-
-  // const handleScroll = () => {
-  //   console.log("HEIGHT", document.documentElement.scrollHeight);
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll);
-  // }, []);
+  const { headlines, loading, fetchMore } = useTopHeadlines(1);
+  const observer = useRef<IntersectionObserver | null>(null);
+  const lastNewsBitRef = useCallback(
+    (node: HTMLElement | null) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && headlines?.articles.length) {
+          fetchMore();
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, headlines, fetchMore]
+  );
 
   return (
     <div className="bg-white border-2 rounded-md p-4 md:h-[536px] flex flex-col justify-around row-span-2 col-start-3">
@@ -28,12 +32,15 @@ const LatestNews = () => {
         />
         <p className="text-lg font-bold">Latest news</p>
       </div>
-      <div
-        className="flex flex-col h-[calc(100vh-380px)] space-y-2 overflow-y-scroll"
-        ref={containerRef}
-      >
+      <div className="flex flex-col h-[calc(100vh-380px)] space-y-2 overflow-y-scroll">
         {headlines?.articles.map(({ title, publishedAt, url }, index) => (
-          <div key={index} className="h-24 border-b border-gray-200 pb-2">
+          <div
+            key={index}
+            className="h-24 border-b border-gray-200 pb-2"
+            ref={
+              index === headlines.articles.length - 1 ? lastNewsBitRef : null
+            }
+          >
             <NewsBit time={publishedAt} description={title} url={url} />
           </div>
         ))}

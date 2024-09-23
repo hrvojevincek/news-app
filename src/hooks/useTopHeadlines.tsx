@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
 import { getTopHeadlines } from "@/utils/actions/getTopHeadlines";
+import { useEffect, useState, useCallback } from "react";
 
 export type Headlines = {
   status: string;
@@ -21,20 +21,33 @@ export const useTopHeadlines = (initialPage = 1) => {
   const [error, setError] = useState<Error | null>(null);
   const [page, setPage] = useState(initialPage);
 
-  useEffect(() => {
-    const fetchHeadlines = async () => {
-      try {
-        const data = await getTopHeadlines(page);
-        console.log(data);
-        setHeadlines(data);
-      } catch (err) {
-        setError(err instanceof Error ? err : new Error("An error occurred"));
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchHeadlines();
-  }, [page]);
+  const fetchHeadlines = useCallback(async (pageNumber: number) => {
+    try {
+      setLoading(true);
+      const data = await getTopHeadlines(pageNumber);
+      setHeadlines((prevHeadlines) => {
+        if (prevHeadlines) {
+          return {
+            ...data,
+            articles: [...prevHeadlines.articles, ...data.articles],
+          };
+        }
+        return data;
+      });
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error("An error occurred"));
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
-  return { headlines, loading, error };
+  useEffect(() => {
+    fetchHeadlines(page);
+  }, [page, fetchHeadlines]);
+
+  const fetchMore = useCallback(() => {
+    setPage((prevPage) => prevPage + 1);
+  }, []);
+
+  return { headlines, loading, error, fetchMore };
 };
