@@ -20,6 +20,8 @@ export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
     setCurrentView(view);
   };
 
+  console.log(articles);
+
   return (
     <>
       <MobileButton onSelectView={handleViewChange} />
@@ -32,7 +34,7 @@ export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-[22px]">
               {articles?.map(
-                ({ byline, title, url, multimedia, section }, index) => (
+                ({ uri, byline, title, url, multimedia, section }, index) => (
                   <React.Fragment key={index}>
                     {index === 2 ? (
                       <div className="row-span-2 hidden md:block">
@@ -44,6 +46,7 @@ export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
                           <CardBreaking category={category} />
                         ) : (
                           <Card
+                            uri={uri}
                             byline={byline}
                             title={title}
                             url={url}

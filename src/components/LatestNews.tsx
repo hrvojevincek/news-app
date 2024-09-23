@@ -1,12 +1,18 @@
 import { useTopHeadlines } from "@/hooks/useTopHeadlines";
 import Image from "next/image";
 import NewsBit from "./NewsBit";
+import { Loader } from "lucide-react";
 
 const LatestNews = () => {
   const { headlines, loading, error } = useTopHeadlines();
 
-  if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+
+  if (loading) {
+    <div className="h-full flex items-center justify-center">
+      <Loader className="size-6 animate-spin text-black" />
+    </div>;
+  }
 
   return (
     <div className="bg-white rounded-md p-4 flex h-[536px] flex-col justify-around row-span-2 col-start-3">
@@ -21,9 +27,14 @@ const LatestNews = () => {
         <p className="text-lg font-bold">Latest news</p>
       </div>
       <div className="flex flex-col space-y-2 overflow-scroll">
-        {headlines?.articles?.map(({ title, publishedAt }, index) => (
+        {headlines?.articles?.map(({ title, publishedAt, url }, index) => (
           <div key={index} className=" h-24 border-b border-[#F4F5F8] pb-2">
-            <NewsBit key={index} time={publishedAt} description={title} />
+            <NewsBit
+              key={index}
+              time={publishedAt}
+              description={title}
+              url={url}
+            />
           </div>
         ))}
       </div>

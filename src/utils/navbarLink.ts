@@ -16,4 +16,5 @@ export const sidebarItems: SidebarItem[] = [
     id: "technology",
     route: "/technology",
   },
+  { name: "Favourite", id: "favourite", route: "/favourites" },
 ];

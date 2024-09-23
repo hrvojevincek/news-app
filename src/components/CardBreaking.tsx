@@ -1,4 +1,5 @@
 import { useGetBreakingStories } from "@/hooks/useGetBreakingStories";
+import Link from "next/link";
 import React from "react";
 
 const CardBreaking = (category: { category: string }) => {
@@ -14,9 +15,11 @@ const CardBreaking = (category: { category: string }) => {
       <p className="text-white bg-redprimary text-xs uppercase font-bold text-center">
         Breaking
       </p>
-      <p className="text-white text-2xl font-bold text-center leading-8">
-        {headlines?.[0].title}
-      </p>
+      <Link href={headlines?.[0].url ?? ""} target="_blank">
+        <p className="text-white text-2xl font-bold text-center cursor-pointer leading-8">
+          {headlines?.[0].title}
+        </p>
+      </Link>
       <p className="text-authorgray text-xs text-center">
         {headlines?.[0].byline}
       </p>
