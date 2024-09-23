@@ -14,9 +14,8 @@ const Input = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add your search submission logic here
-    console.log("Searching for:", searchTerm);
     router.push(`/search?q=${encodeURIComponent(searchTerm)}`);
+    setSearchTerm("");
   };
 
   return (
