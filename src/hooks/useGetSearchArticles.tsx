@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import { getSearchArticles } from "@/utils/actions/getSearchArticles";
+import { useEffect, useState } from "react";
 
 interface Multimedia {
   url: string;
@@ -16,12 +15,58 @@ interface Article {
   multimedia: Multimedia[];
 }
 
+interface Multimedia {
+  url: string;
+}
+
+interface Article {
+  title: string;
+  byline: string;
+  url: string;
+  section: string;
+  multimedia: Multimedia[];
+}
+
+interface RawArticle {
+  abstract: string;
+  byline: {
+    original: string;
+    person: {
+      firstname: string;
+      middlename: string;
+      lastname: string;
+      qualifier: string;
+      title: string;
+      role: string;
+      organization: string;
+      rank: number;
+    }[]; // You can define a more specific type if needed
+    organization: null | string;
+  };
+  headline: {
+    main: string;
+    kicker: string | null;
+    content_kicker: string | null;
+    print_headline: string | null;
+    name: string | null;
+  };
+  lead_paragraph: string;
+  multimedia: {
+    url: string;
+    type: string;
+  }[];
+  section_name: string;
+  snippet: string;
+  web_url: string;
+  _id: string;
+}
+
 export const useGetSearchArticles = (search: string | null) => {
   const [headlines, setHeadlines] = useState<Article[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
-  const parsedData = (data: any[]): Article[] => {
+  const parsedData = (data: RawArticle[]): Article[] => {
     return data.map((article) => {
       return {
         title: article.headline.main,
