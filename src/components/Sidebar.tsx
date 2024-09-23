@@ -4,7 +4,7 @@ import SidebarItems from "./SidebarItems";
 
 const Sidebar = () => {
   return (
-    <div className="mt-5 hidden lg:block">
+    <div className="mt-5 hidden md:block">
       <SidebarItems />
     </div>
   );

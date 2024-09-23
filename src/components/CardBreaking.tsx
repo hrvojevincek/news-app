@@ -11,7 +11,7 @@ const CardBreaking = (category: { category: string }) => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="bg-cardauthor md:h-[252px] gap-3 flex flex-col justify-center items-center hover:shadow-lg rounded-lg p-4">
+    <div className="bg-cardauthor hidden md:h-[252px] gap-3 md:flex flex-col justify-center items-center hover:shadow-lg rounded-lg p-4">
       <p className="text-white bg-redprimary text-xs uppercase font-bold text-center">
         Breaking
       </p>

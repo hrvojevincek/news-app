@@ -15,7 +15,7 @@ const Page = () => {
       <Loader className="size-6 animate-spin text-black" />
     </div>
   ) : (
-    <div className="md:mt-6 w-full sm:px-4">
+    <div className="md:mt-6 w-full sm:px-4 md:px-0 h-80">
       <NewsGrid articles={headlines} category={"News"} />
     </div>
   );

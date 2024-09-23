@@ -14,10 +14,10 @@ const Header = () => {
           <span className="text-redprimary">My</span>News
         </h1>
       </Link>
-      <div className="sm:hidden block justify-self-end">
+      <div className="md:hidden block justify-self-end">
         <Hamburger />
       </div>
-      <div className="col-span-2 sm:col-span-2 md:col-span-8">
+      <div className="col-span-2 sm:col-span-9 md:col-span-8">
         <Input />
       </div>
       <hr className="bg-grayish col-span-12 sm:block hidden" />

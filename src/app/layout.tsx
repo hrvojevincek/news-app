@@ -26,7 +26,7 @@ export default function RootLayout({
         className={`${inter.variable} font-sans antialiased smooth scroll-smooth bg-background`}
       >
         <Banner />
-        <main className="h-screen px-4 sm:px-0 md:container">
+        <main className="px-4 sm:px-0 md:container">
           <Header />
           <div className="flex gap-3">
             <Sidebar />

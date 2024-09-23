@@ -17,7 +17,7 @@ const MobileButton: React.FC<MobileButtonProps> = ({ onSelectView }) => {
   };
 
   return (
-    <div className="flex sm:hidden justify-center items-center mt-5">
+    <div className="flex md:hidden justify-center items-center mt-5">
       <div className="flex gap-2">
         <button
           className={`px-4 py-2 rounded-3xl h-10 font-bold w-[102px] ${

@@ -24,13 +24,13 @@ export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
     <>
       <MobileButton onSelectView={handleViewChange} />
 
-      <div className="mt-5 md:mt-0">
+      <div className="mt-5 md:mt-0 h-full">
         {currentView === "featured" ? (
           <>
             <h1 className="hidden md:block text-xl font-bold mb-2">
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-[22px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-3 lg:grid-rows-3 gap-[22px]">
               {articles?.map(
                 ({ uri, byline, title, url, multimedia, section }, index) => (
                   <React.Fragment key={index}>
@@ -60,7 +60,9 @@ export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
             </div>
           </>
         ) : (
-          <LatestNews />
+          <div className="md:hidden block">
+            <LatestNews />
+          </div>
         )}
       </div>
     </>
