@@ -15,28 +15,32 @@ const Card = ({
   section: string;
   byline: string;
 }) => {
+  console.log(byline);
+
   return (
-    <div className="bg-white hover:shadow-lg flex flex-col rounded-lg">
-      <div className="bg-black/10 h-36 rounded-t-lg relative">
+    <div className="bg-white flex flex-col hover:shadow-lg h-[252px] rounded-lg">
+      <div className="bg-black/10  rounded-t-lg relative h-3/5">
         {multimedia && multimedia.length > 0 && multimedia[0]?.url ? (
           <Image
-            src={multimedia[1].url}
+            src={multimedia[0].url}
             alt={title}
             fill={true}
+            className="rounded-t-lg"
             objectFit="cover"
           />
         ) : null}
       </div>
-      <div className="bg-white rounded-b-lg p-3 justify-around flex flex-col min-h-[112px]">
-        <div>
-          <p className="text-[10px] uppercase text-bluetitle font-bold">
-            {section}
-          </p>
-          <p className="text-base font-medium sm:truncate sm:text-wrap">
-            {title && title.slice(0, 70)}...
-          </p>
-        </div>
-        <p className="text-xs text-cardauthor hidden md:block">{byline}</p>
+      <div className="bg-white rounded-b-lg py-1 px-2 justify-between flex flex-col h-2/5">
+        <p className="text-[10px] uppercase text-bluetitle font-bold">
+          {section}
+        </p>
+        <p className="text-base font-medium sm:truncate sm:text-wrap">
+          {title && title.slice(0, 50)}...
+        </p>
+
+        <p className="text-xs text-cardauthor hidden md:block">
+          {byline.slice(3, -1)}
+        </p>
       </div>
     </div>
   );

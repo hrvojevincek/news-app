@@ -2,7 +2,7 @@ import React from "react";
 
 const CardBreaking = () => {
   return (
-    <div className="bg-cardauthor hover:shadow-lg md:h-[252px] md:w-[321px] rounded-lg flex flex-col items-center justify-center gap-2 p-4">
+    <div className="bg-cardauthor h-full hover:shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 p-4">
       <p className="text-white bg-redprimary text-xs uppercase font-bold">
         Breaking
       </p>
