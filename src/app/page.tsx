@@ -8,16 +8,14 @@ import { Loader } from "lucide-react";
 const Page = () => {
   const { headlines, loading, error } = useGetTopStories("home");
 
-  if (loading) {
-    <div className="h-full flex items-center justify-center">
-      <Loader className="size-6 animate-spin text-black" />
-    </div>;
-  }
-
   if (error) return <div>Error: {error.message}</div>;
 
-  return (
-    <div className="md:mt-6 w-full">
+  return loading ? (
+    <div className="h-112 w-full flex items-center justify-center">
+      <Loader className="size-6 animate-spin text-black" />
+    </div>
+  ) : (
+    <div className="md:mt-6 w-full sm:px-4">
       <NewsGrid articles={headlines} category={"News"} />
     </div>
   );

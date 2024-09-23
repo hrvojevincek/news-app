@@ -12,13 +12,11 @@ const CategoryPage = ({ params }: { params: { category: string } }) => {
 
   if (error) return <div>Error: {error.message}</div>;
 
-  if (loading) {
-    <div className="h-full flex items-center bg-red-600 justify-center">
+  return loading ? (
+    <div className="h-112 w-full flex items-center justify-center">
       <Loader className="size-6 animate-spin text-black" />
-    </div>;
-  }
-
-  return (
+    </div>
+  ) : (
     <div className="md:mt-6 w-full">
       <NewsGrid articles={headlines} category={category} />
     </div>

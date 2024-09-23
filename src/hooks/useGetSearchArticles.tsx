@@ -45,11 +45,9 @@ export const useGetSearchArticles = (search: string | null) => {
         if (search) {
           setLoading(true);
           const data = await getSearchArticles(search);
-          console.log("data", parsedData(data));
           setHeadlines(parsedData(data));
         }
       } catch (err) {
-        console.error("Error:", err);
         setError(err instanceof Error ? err : new Error("An error occurred"));
       } finally {
         setLoading(false);

@@ -15,7 +15,7 @@ const FavouritesPage = () => {
   }, []);
 
   return (
-    <div className="md:mt-6 w-full">
+    <div className="w-full mt-6">
       <h1 className="text-xl font-bold mb-4">Favourites</h1>
 
       {bookmarks.length > 0 ? (

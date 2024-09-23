@@ -20,8 +20,6 @@ export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
     setCurrentView(view);
   };
 
-  console.log(articles);
-
   return (
     <>
       <MobileButton onSelectView={handleViewChange} />

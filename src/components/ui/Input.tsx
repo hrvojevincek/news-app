@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
 const Input = () => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -14,8 +15,10 @@ const Input = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true); // Disable the button
     router.push(`/search?q=${encodeURIComponent(searchTerm)}`);
     setSearchTerm("");
+    setIsSubmitting(false);
   };
 
   return (
@@ -25,13 +28,14 @@ const Input = () => {
         type="text"
         required
         placeholder="Search news"
-        className="h-10 pl-10 sm:h-[50px] text-grayicon rounded-xl focus:outline-none w-full"
+        className="h-10 pl-10 sm:h-[50px] text-black rounded-xl focus:outline-none w-full"
         value={searchTerm}
         onChange={handleSearch}
       />
       <button
         type="submit"
         className="absolute hidden sm:block right-2 bg-redprimary h-9 font-bold text-white uppercase top-1/2 -translate-y-1/2 px-4 py-1 rounded-md hover:bg-redPrimary/90 transition-colors"
+        disabled={isSubmitting}
       >
         Search
       </button>

@@ -7,7 +7,7 @@ const CardBreaking = (category: { category: string }) => {
     category.category
   );
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="bg-cardauthor h-full rounded-lg"></div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
