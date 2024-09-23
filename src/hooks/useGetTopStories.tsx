@@ -1,7 +1,9 @@
+"use client";
+
 import { getTopStoriesNYT } from "@/utils/actions/getTopStoriesNYT";
 import { useEffect, useState } from "react";
 
-interface NYTArticle {
+export interface NYTArticle {
   abstract: string;
   byline: string;
   created_date: string;

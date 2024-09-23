@@ -1,3 +1,5 @@
+"use client";
+
 import { getBreakingStoriesNYT } from "@/utils/actions/getBreakingStories";
 import { useEffect, useState } from "react";
 

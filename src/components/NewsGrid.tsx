@@ -1,29 +1,24 @@
 "use client";
 
-import { useGetTopStories } from "@/hooks/useGetTopStories";
 import React, { useState } from "react";
 import Card from "./Card";
 import CardBreaking from "./CardBreaking";
 import LatestNews from "./LatestNews";
 import MobileButton from "./MobileButton";
+import { NYTArticle } from "@/hooks/useGetTopStories";
 
 interface NewsGridProps {
   category?: string;
+  articles?: NYTArticle[] | null;
 }
 
-const NewsGrid = ({ category = "Home" }: NewsGridProps) => {
+export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
   const [currentView, setCurrentView] = useState<"featured" | "latest">(
     "featured"
   );
-
   const handleViewChange = (view: "featured" | "latest") => {
     setCurrentView(view);
   };
-
-  const { headlines, loading, error } = useGetTopStories(category);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <>
@@ -36,7 +31,7 @@ const NewsGrid = ({ category = "Home" }: NewsGridProps) => {
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-[22px]">
-              {headlines?.map(
+              {articles?.map(
                 ({ byline, title, url, multimedia, section }, index) => (
                   <React.Fragment key={index}>
                     {index === 2 ? (

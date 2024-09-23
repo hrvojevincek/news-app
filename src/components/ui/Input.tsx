@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import { Search } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Input = () => {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,6 +16,7 @@ const Input = () => {
     e.preventDefault();
     // Add your search submission logic here
     console.log("Searching for:", searchTerm);
+    router.push(`/search?q=${encodeURIComponent(searchTerm)}`);
   };
 
   return (
@@ -21,6 +24,7 @@ const Input = () => {
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-grayicon h-4 w-4" />
       <input
         type="text"
+        required
         placeholder="Search news"
         className="h-10 pl-10 sm:h-[50px] text-grayicon rounded-xl focus:outline-none w-full"
         value={searchTerm}
