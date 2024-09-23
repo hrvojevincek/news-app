@@ -1,15 +1,25 @@
+import { useGetBreakingStories } from "@/hooks/useGetBreakingStories";
 import React from "react";
 
-const CardBreaking = () => {
+const CardBreaking = (category: { category: string }) => {
+  const { headlines, loading, error } = useGetBreakingStories(
+    category.category
+  );
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
-    <div className="bg-cardauthor h-full hover:shadow-lg rounded-lg flex flex-col items-center justify-center gap-2 p-4">
-      <p className="text-white bg-redprimary text-xs uppercase font-bold">
+    <div className="bg-cardauthor md:h-[252px] gap-3 flex flex-col justify-center items-center hover:shadow-lg rounded-lg p-4">
+      <p className="text-white bg-redprimary text-xs uppercase font-bold text-center">
         Breaking
       </p>
       <p className="text-white text-2xl font-bold text-center leading-8">
-        Really some long title here that will be truncated Really some
+        {headlines?.[0].title}
       </p>
-      <p className="text-authorgray text-xs">Darko Podravec</p>
+      <p className="text-authorgray text-xs text-center">
+        {headlines?.[0].byline}
+      </p>
     </div>
   );
 };

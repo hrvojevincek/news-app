@@ -1,4 +1,4 @@
-import { getTopStoriesNYT } from "@/utils/actions/getTopStoriesNYT";
+import { getBreakingStoriesNYT } from "@/utils/actions/getBreakingStories";
 import { useEffect, useState } from "react";
 
 interface NYTArticle {
@@ -29,7 +29,7 @@ interface NYTArticle {
   url: string;
 }
 
-export const useGetTopStories = (category: string) => {
+export const useGetBreakingStories = (category: string) => {
   const [headlines, setHeadlines] = useState<NYTArticle[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -38,7 +38,7 @@ export const useGetTopStories = (category: string) => {
     const fetchHeadlines = async () => {
       try {
         setLoading(true);
-        const data = await getTopStoriesNYT(category);
+        const data = await getBreakingStoriesNYT(category);
         const filteredData = data.filter(
           (article: NYTArticle) => article.title
         );

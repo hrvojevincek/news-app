@@ -31,6 +31,7 @@ const SidebarItems = ({
                 ? "text-redprimary filter-redprimary"
                 : "text-grayish filter-grayish/70"
             }`}
+            style={{ width: "auto", height: "auto" }} // Maintain aspect ratio
           />
           {name}
         </Link>

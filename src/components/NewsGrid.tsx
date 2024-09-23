@@ -7,7 +7,11 @@ import CardBreaking from "./CardBreaking";
 import LatestNews from "./LatestNews";
 import MobileButton from "./MobileButton";
 
-const NewsGrid = () => {
+interface NewsGridProps {
+  category?: string;
+}
+
+const NewsGrid = ({ category = "Home" }: NewsGridProps) => {
   const [currentView, setCurrentView] = useState<"featured" | "latest">(
     "featured"
   );
@@ -16,9 +20,7 @@ const NewsGrid = () => {
     setCurrentView(view);
   };
 
-  const { headlines, loading, error } = useGetTopStories();
-
-  console.log(headlines);
+  const { headlines, loading, error } = useGetTopStories(category);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -30,7 +32,9 @@ const NewsGrid = () => {
       <div className="mt-5 md:mt-0">
         {currentView === "featured" ? (
           <>
-            <h1 className="hidden md:block text-xl font-bold mb-2">News</h1>
+            <h1 className="hidden md:block text-xl font-bold mb-2">
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </h1>
             <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-[22px]">
               {headlines?.map(
                 ({ byline, title, url, multimedia, section }, index) => (
@@ -42,7 +46,7 @@ const NewsGrid = () => {
                     ) : (
                       <div>
                         {index === 4 ? (
-                          <CardBreaking />
+                          <CardBreaking category={category} />
                         ) : (
                           <Card
                             byline={byline}
