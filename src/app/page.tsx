@@ -12,11 +12,7 @@ const Page = () => {
 
   if (error) return <div>Error: {error.message}</div>;
 
-  return loading ? (
-    <div className="h-112 w-full flex items-center justify-center">
-      <Loader className="size-6 animate-spin text-black" />
-    </div>
-  ) : (
+  return (
     <div className="md:mt-6 w-full sm:px-4 md:px-0 h-80">
       <NewsGrid articles={headlines} category={"News"} />
     </div>
