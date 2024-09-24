@@ -44,6 +44,11 @@ export const useTopHeadlines = (initialPage = 1) => {
 
   useEffect(() => {
     fetchHeadlines(page);
+    const intervalId = setInterval(() => {
+      fetchHeadlines(page);
+    }, 60000); // 60 seconds
+
+    return () => clearInterval(intervalId); // Cleanup interval on unmount
   }, [page, fetchHeadlines]);
 
   const fetchMore = useCallback(() => {
