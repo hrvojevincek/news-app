@@ -36,7 +36,7 @@ export const useTopHeadlines = (initialPage = 1) => {
             );
             return {
               ...data,
-              articles: [...prevHeadlines.articles, ...newArticles],
+              articles: [...prevHeadlines.articles, ...newArticles]
             };
           }
           return data;
