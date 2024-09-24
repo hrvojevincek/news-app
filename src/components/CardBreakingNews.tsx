@@ -4,9 +4,9 @@ import Link from "next/link";
 
 import { useGetBreakingStories } from "@/hooks/useGetBreakingStories";
 
-const CardBreaking = (category: { category: string }) => {
+const CardBreakingNews = (category: { category: string }) => {
   const { headlines, loading, error } = useGetBreakingStories(
-    category.category,
+    category.category
   );
 
   if (loading) return <div className="bg-cardauthor h-full rounded-lg"></div>;
@@ -29,4 +29,4 @@ const CardBreaking = (category: { category: string }) => {
   );
 };
 
-export default CardBreaking;
+export default CardBreakingNews;

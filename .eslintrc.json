@@ -17,10 +17,12 @@
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "no-unused-vars": "warn", // For JavaScript
+    "@typescript-eslint/no-unused-vars": "warn",
     "import/no-duplicates": "off",
     "import/order": "off",
     "import/no-named-as-default": "off",
-    "prettier/prettier": "error"
+    "prettier/prettier": ["error", { "trailingComma": "none" }]
   },
   "settings": {
     "react": {

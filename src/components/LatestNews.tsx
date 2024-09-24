@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTopHeadlines } from "@/hooks/useTopHeadlines";
 
 import NewsBit from "./NewsBit";
+import { Loader } from "lucide-react";
 
 const LatestNews = () => {
   const { headlines, loading, fetchMore } = useTopHeadlines(1);
@@ -20,7 +21,7 @@ const LatestNews = () => {
       });
       if (node) observer.current.observe(node);
     },
-    [loading, headlines, fetchMore],
+    [loading, headlines, fetchMore]
   );
 
   return (
@@ -36,6 +37,11 @@ const LatestNews = () => {
         <p className="text-lg font-bold">Latest news</p>
       </div>
       <div className="flex flex-col h-[calc(100vh-386px)] space-y-2 overflow-y-scroll">
+        {loading && (
+          <div className="h-full w-full flex items-center justify-center">
+            <Loader className="size-6 animate-spin text-black" />
+          </div>
+        )}
         {headlines?.articles.map(({ title, publishedAt, url }, index) => (
           <div
             key={index}

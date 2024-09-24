@@ -5,7 +5,7 @@ import React, { useMemo, useState } from "react";
 import { NYTArticle } from "@/hooks/useGetTopStories";
 
 import Card from "./Card";
-import CardBreaking from "./CardBreaking";
+import CardBreakingNews from "./CardBreakingNews";
 import LatestNews from "./LatestNews";
 import MobileButton from "./MobileButton";
 
@@ -16,7 +16,7 @@ interface NewsGridProps {
 
 export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
   const [currentView, setCurrentView] = useState<"featured" | "latest">(
-    "featured",
+    "featured"
   );
   const handleViewChange = (view: "featured" | "latest") => {
     setCurrentView(view);
@@ -24,7 +24,7 @@ export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
 
   const filteredArticles = useMemo(
     () => articles?.filter((article) => article.title),
-    [articles],
+    [articles]
   );
 
   return (
@@ -48,7 +48,7 @@ export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
                     ) : (
                       <div>
                         {index === 4 ? (
-                          <CardBreaking category={category} />
+                          <CardBreakingNews category={category} />
                         ) : (
                           <Card
                             uri={uri}
@@ -62,7 +62,7 @@ export const NewsGrid = ({ articles, category = "Home" }: NewsGridProps) => {
                       </div>
                     )}
                   </React.Fragment>
-                ),
+                )
               )}
             </div>
           </>

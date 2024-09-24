@@ -43,7 +43,7 @@ export const useGetBreakingStories = (category: string) => {
         setLoading(true);
         const data = await getBreakingStoriesNYT(category);
         const filteredData = data.filter(
-          (article: NYTArticle) => article.title,
+          (article: NYTArticle) => article.title
         );
         setHeadlines(filteredData);
       } catch (err) {
