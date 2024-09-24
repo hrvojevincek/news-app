@@ -2,7 +2,20 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["static01.nyt.com", "www.nytimes.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "static01.nyt.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.nytimes.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
 };
 
