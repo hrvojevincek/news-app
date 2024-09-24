@@ -1,9 +1,5 @@
 "use client";
 
-import React from "react";
-
-import { Loader } from "lucide-react";
-
 import NewsGrid from "@/components/NewsGrid";
 import { useGetTopStories } from "@/hooks/useGetTopStories";
 

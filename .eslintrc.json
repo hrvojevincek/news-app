@@ -22,7 +22,7 @@
     "import/no-duplicates": "off",
     "import/order": "off",
     "import/no-named-as-default": "off",
-    "prettier/prettier": ["error", { "trailingComma": "none" }]
+    "prettier/prettier": ["error", { "trailingComma": "auto" }]
   },
   "settings": {
     "react": {
